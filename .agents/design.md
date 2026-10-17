@@ -28,6 +28,14 @@ Mendukung tema **Light** dan **Dark** mode melalui semantic color tokens Tailwin
 
 ## 4. Komponen Khusus My Indekos
 - **Floating Controls (Pill)**: Komponen mengambang di bawah layar untuk navigasi cepat antar halaman utama, toggle tema instan, dan badge notifikasi.
+- **PublicHeader (`src/components/public-header.tsx`)**:
+  - Navbar terstandar untuk seluruh halaman di luar restricted/protected (`/`, `/properties`, `/fitur`, `/tentang`).
+  - Layout:
+    - *Brand/Logo*: Logo SVG Indekos + link ke `/`.
+    - *Navigation*: Link berstatus aktif (`Beranda`, `Cari Kos`, `Fitur`, `Tentang`).
+    - *Smart Auth CTA*: Menampilkan tombol "Masuk" jika pengguna adalah tamu, atau otomatis berubah menjadi "Ke Dashboard" bila sudah login.
+    - *Mobile Responsive*: Dilengkapi drawer menu toggle (hamburger) dengan backdrop blur.
+  - Tampilan: `sticky top-0 z-40`, border bawah transparan halus (`border-border/60`), dan glassmorphism `bg-background/80 backdrop-blur-md`.
 - **PasswordInput**: Input khusus kata sandi dengan toggle mata (*eye icon*) terintegrasi yang mudah diakses.
 - **Modal Penempatan Kamar**: Dialog interaktif untuk owner memilih unit kamar kosong saat menyetujui calon penyewa.
 - **Utility Cards (PLN / PDAM)**: Kartu status ringkas biaya bulanan dilengkapi visualisasi persentase konsumsi dan badge status pembayaran.

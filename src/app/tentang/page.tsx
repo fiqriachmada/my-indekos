@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { PublicHeader } from "@/components/public-header"
 import {
   BuildingOffice2Icon,
   HeartIcon,
@@ -35,33 +36,7 @@ export default function TentangPage() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors">
       {/* Header */}
-      <header className="border-b border-border/60 bg-card/60 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2">
-            <img src="/indekos-logo.svg" alt="My Indekos" className="h-9 w-auto" />
-          </Link>
-          <div className="flex items-center gap-3">
-            <Link
-              href="/fitur"
-              className="text-sm font-semibold text-muted-foreground hover:text-foreground transition"
-            >
-              Fitur
-            </Link>
-            <Link
-              href="/properties"
-              className="text-sm font-semibold text-muted-foreground hover:text-foreground transition"
-            >
-              Cari Kos
-            </Link>
-            <Link
-              href="/login"
-              className="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-700 transition"
-            >
-              Masuk
-            </Link>
-          </div>
-        </div>
-      </header>
+      <PublicHeader />
 
       {/* Hero */}
       <section className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">

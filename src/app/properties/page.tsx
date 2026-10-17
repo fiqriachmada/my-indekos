@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { createAdminClient } from "@/lib/supabase/admin"
+import { PublicHeader } from "@/components/public-header"
 import PropertySearchClient from "./property-search-client"
 
 export const metadata = {
@@ -59,7 +60,9 @@ export default async function PropertiesPage() {
   }))
 
   return (
-    <main className="min-h-screen bg-background px-4 py-12 pb-28 text-foreground transition-colors sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background text-foreground transition-colors">
+      <PublicHeader />
+      <main className="px-4 py-12 pb-28 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8">
           <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
@@ -85,5 +88,6 @@ export default async function PropertiesPage() {
         />
       </div>
     </main>
+  </div>
   )
 }
