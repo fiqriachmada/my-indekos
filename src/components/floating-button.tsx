@@ -122,8 +122,9 @@ export default function FloatingControls() {
     loadNotifications()
 
     // Supabase Realtime channel
+    const channelName = `floating_notifications_${user}_${Date.now()}`
     const channel = supabase
-      .channel(`floating_notifications_${user}`)
+      .channel(channelName)
       .on(
         "postgres_changes",
         {
@@ -133,13 +134,15 @@ export default function FloatingControls() {
           filter: `to_user_id=eq.${user}`,
         },
         () => {
+          if (!active) return
           loadNotifications()
         }
       )
       .subscribe()
 
     return () => {
-      supabase.removeChannel(channel)
+      active = false
+      void supabase.removeChannel(channel)
     }
   }, [user])
 
