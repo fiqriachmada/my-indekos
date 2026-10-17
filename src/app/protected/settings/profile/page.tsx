@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
+import { PROTECTED_PROFILE_CONSTANTS } from '@/constants'
 
 type ProfileData = {
   profile: {
@@ -20,7 +21,7 @@ type ProfileData = {
 }
 
 async function fetchProfile(): Promise<ProfileData> {
-  const res = await fetch('/api/profile', {
+  const res = await fetch(PROTECTED_PROFILE_CONSTANTS.ROUTES.API, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   })
@@ -38,7 +39,7 @@ async function updateProfileApi(payload: {
   last_name: string
   display_name: string
 }) {
-  const res = await fetch('/api/profile', {
+  const res = await fetch(PROTECTED_PROFILE_CONSTANTS.ROUTES.API, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

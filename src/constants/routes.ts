@@ -24,4 +24,7 @@ export const routes = {
   utilities: () => '/protected/utilities',
   settings: () => '/protected/settings',
   notifications: () => '/protected/notifications',
+  profile: () => '/protected/profile',
+  profileSettings: () => '/protected/settings/profile',
+  apiProfile: () => '/protected/api/profile',
 } as const

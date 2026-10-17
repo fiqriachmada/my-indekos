@@ -5,5 +5,6 @@ export * from './public/login'
 export * from './public/register'
 export * from './public/properties'
 export * from './protected/dashboard'
+export * from './protected/profile'
 export * from './routes'
 
