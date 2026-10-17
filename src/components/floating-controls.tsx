@@ -167,7 +167,7 @@ export default function FloatingControls() {
     setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))
     setUnreadCount((prev) => Math.max(0, prev - 1))
     setMenu(null)
-    router.push("/notifications")
+    router.push("/protected/notifications")
   }
 
   async function deleteSingleNotification(e: React.MouseEvent, id: string) {
@@ -196,11 +196,11 @@ export default function FloatingControls() {
   const links = user
     ? [
         { href: "/", label: "Home" },
-        { href: "/dashboard", label: "Dashboard" },
-        { href: "/notifications", label: "Notifikasi" },
+        { href: "/protected/dashboard", label: "Dashboard" },
+        { href: "/protected/notifications", label: "Notifikasi" },
         { href: "/properties", label: "Cari Properti" },
-        { href: "/settings/profile", label: "Profile" },
-        { href: "/settings", label: "Settings" },
+        { href: "/protected/settings/profile", label: "Profile" },
+        { href: "/protected/settings", label: "Settings" },
       ]
     : [
         { href: "/", label: "Home" },
@@ -326,7 +326,7 @@ export default function FloatingControls() {
                               onClick={(e) => {
                                 e.stopPropagation()
                                 setMenu(null)
-                                router.push(`/notifications/${n.id}`)
+                                router.push(`/protected/notifications/${n.id}`)
                               }}
                               className="font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
                             >
@@ -351,7 +351,7 @@ export default function FloatingControls() {
                       type="button"
                       onClick={() => {
                         setMenu(null)
-                        router.push("/notifications")
+                        router.push("/protected/notifications")
                       }}
                       className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
                     >

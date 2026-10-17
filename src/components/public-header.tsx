@@ -35,23 +35,20 @@ export function PublicHeader() {
     { href: '/tentang', label: 'Tentang' },
   ]
 
-  const authTarget = isAuthenticated ? '/dashboard' : '/login'
+  const authTarget = isAuthenticated ? '/protected/dashboard' : '/login'
   const authLabel = isAuthenticated ? 'Ke Dashboard' : 'Masuk'
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md transition-colors">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand / Logo */}
+        {/* Brand / Logo (Mark-only) */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2.5 transition hover:opacity-90"
+          className="flex items-center transition hover:opacity-90"
           aria-label="My Indekos Beranda"
         >
-          <img src="/indekos-logo.svg" alt="My Indekos" className="h-9 w-auto" />
-          <span className="hidden text-lg font-bold tracking-tight text-foreground sm:inline-block">
-            My Indekos
-          </span>
+          <img src="/icon.svg" alt="My Indekos" className="size-10 w-auto drop-shadow-xs" />
         </Link>
 
         {/* Desktop Navigation Links */}

@@ -50,7 +50,7 @@ export function RoomUtilities({ roomId }: { roomId: string }) {
 
   const load = useCallback(async () => {
     try {
-      const res = await fetch(`/api/rooms/${roomId}/utilities`, { cache: 'no-store' })
+      const res = await fetch(`/protected/api/rooms/${roomId}/utilities`, { cache: 'no-store' })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Gagal memuat utilitas.')
       setData(json)
@@ -66,7 +66,7 @@ export function RoomUtilities({ roomId }: { roomId: string }) {
     let ignore = false
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/rooms/${roomId}/utilities`, { cache: 'no-store' })
+        const res = await fetch(`/protected/api/rooms/${roomId}/utilities`, { cache: 'no-store' })
         const json = await res.json()
         if (!ignore) {
           if (!res.ok) throw new Error(json.error || 'Gagal memuat utilitas.')
@@ -99,7 +99,7 @@ export function RoomUtilities({ roomId }: { roomId: string }) {
     if (!formType) return
     setSaving(true)
     try {
-      const res = await fetch(`/api/rooms/${roomId}/utilities`, {
+      const res = await fetch(`/protected/api/rooms/${roomId}/utilities`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ utilityType: formType, ...form, paidAt: new Date(form.paidAt).toISOString() }),
@@ -118,7 +118,7 @@ export function RoomUtilities({ roomId }: { roomId: string }) {
 
   async function remove(id: string) {
     if (!confirm('Hapus catatan ini?')) return
-    const res = await fetch(`/api/rooms/${roomId}/utilities?id=${id}`, { method: 'DELETE' })
+    const res = await fetch(`/protected/api/rooms/${roomId}/utilities?id=${id}`, { method: 'DELETE' })
     const json = await res.json()
     if (!res.ok) return toast.error(json.error || 'Gagal menghapus.')
     toast.success('Catatan dihapus.')

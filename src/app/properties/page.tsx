@@ -62,8 +62,7 @@ export default async function PropertiesPage() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors">
       <PublicHeader />
-      <main className="px-4 py-12 pb-28 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+      <main className="mx-auto max-w-7xl px-4 py-12 pb-28 sm:px-6 lg:px-8">
         <div className="mb-8">
           <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
             Jelajahi Indekos
@@ -86,8 +85,7 @@ export default async function PropertiesPage() {
           initialProperties={properties ?? []}
           currentUser={user ? { id: user.id, email: user.email ?? null } : null}
         />
-      </div>
-    </main>
-  </div>
+      </main>
+    </div>
   )
 }

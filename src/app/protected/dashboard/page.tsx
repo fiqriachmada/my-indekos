@@ -225,7 +225,7 @@ export default async function DashboardPage() {
               {rooms.map((room) => (
                 <li key={room.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-3.5">
                   <Link
-                    href={`/rooms/detail/${room.id}`}
+                    href={`/protected/rooms/detail/${room.id}`}
                     className="group block flex-1 focus:outline-none"
                   >
                     <p className="font-medium group-hover:text-primary transition-colors">

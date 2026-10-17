@@ -38,7 +38,7 @@ function useAuthPath() {
     return () => authListener.subscription.unsubscribe()
   }, [])
 
-  return isAuthenticated ? "/dashboard" : "/login"
+  return isAuthenticated ? "/protected/dashboard" : "/login"
 }
 
 export default function LandingClient({ stats }: { stats: IndekosLandingStats }) {

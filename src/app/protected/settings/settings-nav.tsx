@@ -18,12 +18,12 @@ import {
 import { createClient } from '@/lib/supabase/client'
 
 const tabs = [
-  { href: '/settings/profile', label: 'Profil Saya', desc: 'Nama depan & belakang', Icon: User },
-  { href: '/settings/avatar', label: 'Foto Profil', desc: 'Unggah & ganti foto akun', Icon: Camera },
-  { href: '/settings/username', label: 'Username', desc: 'Ubah @username unik', Icon: AtSign },
-  { href: '/settings/phone', label: 'Nomor Telepon', desc: 'Kontak aktif & WhatsApp', Icon: Phone },
-  { href: '/settings/password', label: 'Password', desc: 'Ubah kata sandi akun', Icon: KeyRound },
-  { href: '/settings/theme', label: 'Tema Tampilan', desc: 'Mode gelap, terang, sistem', Icon: Palette },
+  { href: '/protected/settings/profile', label: 'Profil Saya', desc: 'Nama depan & belakang', Icon: User },
+  { href: '/protected/settings/avatar', label: 'Foto Profil', desc: 'Unggah & ganti foto akun', Icon: Camera },
+  { href: '/protected/settings/username', label: 'Username', desc: 'Ubah @username unik', Icon: AtSign },
+  { href: '/protected/settings/phone', label: 'Nomor Telepon', desc: 'Kontak aktif & WhatsApp', Icon: Phone },
+  { href: '/protected/settings/password', label: 'Password', desc: 'Ubah kata sandi akun', Icon: KeyRound },
+  { href: '/protected/settings/theme', label: 'Tema Tampilan', desc: 'Mode gelap, terang, sistem', Icon: Palette },
 ]
 
 export function SettingsNav() {

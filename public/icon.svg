@@ -1,0 +1,26 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="indekosIconGradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5" />
+      <stop offset="1" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="indekosRoofGradient" x1="12" y1="10" x2="36" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" />
+      <stop offset="1" stop-color="#E0E7FF" />
+    </linearGradient>
+    <filter id="indekosShadow" x="-4" y="-2" width="56" height="56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4F46E5" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#indekosShadow)">
+    <rect width="48" height="48" rx="14" fill="url(#indekosIconGradient)" />
+    <!-- Roof & Home Geometric Symbol -->
+    <path d="M24 11L12 21.5V35C12 36.1 12.9 37 14 37H34C35.1 37 36 36.1 36 35V21.5L24 11Z" fill="url(#indekosRoofGradient)" fill-opacity="0.2" />
+    <path d="M24 11L10 23L12.5 25.2L24 15.3L35.5 25.2L38 23L24 11Z" fill="#FFFFFF" />
+    <!-- Doorway Keyhole Accent -->
+    <rect x="20.5" y="22.5" width="7" height="13.5" rx="3.5" fill="#FFFFFF" />
+    <circle cx="24" cy="27" r="1.8" fill="#4F46E5" />
+    <path d="M23.3 28.2H24.7V32.2H23.3V28.2Z" fill="#4F46E5" />
+  </g>
+</svg>
