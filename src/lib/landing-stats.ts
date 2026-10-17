@@ -40,12 +40,19 @@ export async function getIndekosLandingStats(): Promise<IndekosLandingStats> {
     const availableRooms = Math.max(0, totalRooms - occupiedRooms)
 
     // 3. Ambil count total member / penyewa aktif
-    const { count: membersCount, error: memberError } = await admin
-      .from("room_members")
-      .select("id", { count: "exact", head: true })
+    let totalMembers = 0
+    try {
+      const { count: membersCount, error: memberError } = await admin
+        .from("room_members")
+        .select("*", { count: "exact", head: true })
 
-    if (memberError) {
-      console.error("Error fetching room members count:", memberError)
+      if (memberError && Object.keys(memberError).length > 0) {
+        console.warn("Notice on fetching room members count:", memberError.message || memberError)
+      } else if (typeof membersCount === "number") {
+        totalMembers = membersCount
+      }
+    } catch {
+      // fallback to 0 if table not accessible
     }
 
     return {
@@ -53,7 +60,7 @@ export async function getIndekosLandingStats(): Promise<IndekosLandingStats> {
       totalRooms,
       availableRooms,
       occupiedRooms,
-      totalMembers: membersCount || 0,
+      totalMembers,
     }
   } catch (err) {
     console.error("Failed to get indekos landing stats:", err)

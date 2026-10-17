@@ -72,10 +72,7 @@ export default function LandingClient({ stats }: { stats: IndekosLandingStats })
   ]
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors selection:bg-indigo-500 selection:text-white">
-      {/* Unified Public Header */}
-      <PublicHeader />
-
+    <div className="bg-background text-foreground transition-colors selection:bg-indigo-500 selection:text-white">
       {/* 1. HERO SECTION */}
       <div className="relative overflow-hidden border-b border-border/60">
         <div className="mx-auto max-w-7xl">
@@ -225,18 +222,6 @@ export default function LandingClient({ stats }: { stats: IndekosLandingStats })
           </div>
         </div>
       </section>
-
-      {/* 5. FOOTER */}
-      <footer className="border-t border-border bg-card py-8 text-center text-xs text-muted-foreground">
-        <div className="mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} My Indekos. Hak Cipta Dilindungi.</p>
-          <div className="flex gap-4">
-            <Link href="/properties" className="hover:text-foreground">Cari Kos</Link>
-            <Link href="/login" className="hover:text-foreground">Login</Link>
-            <Link href="/register" className="hover:text-foreground">Daftar</Link>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

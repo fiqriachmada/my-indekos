@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
-import FloatingControls from "@/components/floating-controls";
+import FloatingButton from "@/components/floating-button";
 import { Toaster } from "@/components/ui/sonner";
 
 const jakartaSans = Plus_Jakarta_Sans({
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={jakartaSans.variable}>
       <body className="font-sans antialiased">
         <QueryProvider>{children}</QueryProvider>
-        <FloatingControls />
+        <FloatingButton />
         <Toaster position="top-right" richColors />
       </body>
     </html>

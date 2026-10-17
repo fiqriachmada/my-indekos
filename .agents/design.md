@@ -42,3 +42,32 @@ Mendukung tema **Light** dan **Dark** mode melalui semantic color tokens Tailwin
 - **PasswordInput**: Input khusus kata sandi dengan toggle mata (*eye icon*) terintegrasi yang mudah diakses.
 - **Modal Penempatan Kamar**: Dialog interaktif untuk owner memilih unit kamar kosong saat menyetujui calon penyewa.
 - **Utility Cards (PLN / PDAM)**: Kartu status ringkas biaya bulanan dilengkapi visualisasi persentase konsumsi dan badge status pembayaran.
+
+## 5. Standar Internasional Readability & Struktur Kode
+
+Mengikuti Clean Code, Google & Airbnb TypeScript style guide, serta aturan linter industri (`max-lines`):
+
+### Batasan Baris Per File (Max Lines per File)
+1. **Page Orchestrator (`page.tsx`)**:
+   - **Target: 30 – 60 baris** (Maksimal toleransi: 80 baris).
+   - `page.tsx` bertindak sebagai *orchestrator/conductor*. File hanya merangkai metadata, container shell, dan komponen dari folder segmented `_components/`. Dilarang menulis ratusan baris markup JSX langsung di root `page.tsx`.
+2. **Segmented Components (`_components/`)**:
+   - Bagian UI yang hanya relevan untuk halaman terkait dikelompokkan ke dalam folder lokal `src/app/<route>/_components/` (misal: `_components/fitur-hero.tsx`, `_components/fitur-grid.tsx`, `_components/tentang-hero.tsx`, `_components/tentang-values.tsx`).
+   - Setiap subkomponen fokus pada satu blok bagian dengan batas ideal **< 100 baris**.
+3. **Reusable Domain Components (`src/components/`)**:
+   - Komponen global seperti header, footer, modal, atau cards dibatasi idealnya **50 – 150 baris**.
+4. **Logic Hooks & Helpers**:
+   - Target **< 100 baris** per custom hook atau utility function.
+
+### Standar Arsitektur Internasionalisasi (i18n Direct Type-Safe Jump)
+1. **Direct Object Lookup (Anti "Magic String")**:
+   - Menggunakan typed dictionary pattern: `src/i18n/id.ts` (source schema) dan `src/i18n/en.ts` (strictly typed).
+   - Penggunaan di komponen:
+     ```tsx
+     const { t } = useTranslation()
+     return <h1>{t.nav.home}</h1>
+     ```
+   - **Keunggulan**: Developer di VS Code bisa langsung menekan `Ctrl + Click` / `Cmd + Click` pada `t.nav.home` dan kursor langsung melompat (*jump-to-definition*) ke definisi katanya di `id.ts` atau `en.ts`.
+2. **Language Persistence**:
+   - Disimpan di `localStorage` (`my_indekos_locale`) dan disinkronkan secara realtime via `CustomEvent` tanpa me-reload seluruh halaman.
+

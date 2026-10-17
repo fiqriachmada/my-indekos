@@ -1,0 +1,67 @@
+import type { TranslationSchema } from './id'
+
+export const en: TranslationSchema = {
+  common: {
+    back: 'Back',
+    save: 'Save',
+    cancel: 'Cancel',
+    loading: 'Loading...',
+    active: 'Active',
+    inactive: 'Inactive',
+    search: 'Search',
+    reset: 'Reset',
+  },
+  nav: {
+    home: 'Home',
+    search: 'Find Kos',
+    features: 'Features',
+    about: 'About',
+    login: 'Sign In',
+    dashboard: 'Dashboard',
+  },
+  landing: {
+    badge: 'Modern & Transparent Boarding House Management',
+    heroTitle: 'Manage boarding operations',
+    heroSubtitle: 'effortlessly',
+    heroDesc:
+      'Complete platform for owners and occupants. Track room leasing, manage utility bills, and review tenancy applications under one calm roof.',
+    exploreBtn: 'Explore Available Rooms',
+    loginBtn: 'Owner / Tenant Sign In',
+    openDashboard: 'Open Dashboard',
+  },
+  properties: {
+    title: 'Find Boarding Houses & Rooms',
+    subtitle: 'Explore Indekos',
+    desc: 'Discover cozy, strategically located rooms suited to your living lifestyle.',
+    searchPlaceholder: 'Search by boarding name or city location...',
+    allTypes: 'All Types',
+    kosOnly: 'Boarding Only',
+    onlyAvailable: 'Available Rooms Only',
+    viewRooms: 'View Rooms',
+    applyRoom: 'Apply Lease',
+    showing: 'Showing',
+    of: 'of',
+    properties: 'properties',
+    emptyTitle: 'No properties found',
+    emptyDesc: 'Try adjusting your search keywords or switching filters.',
+  },
+  features: {
+    badge: 'Smart Living Platform',
+    title: 'Complete Tools for',
+    highlight: 'Modern Boarding Business',
+    desc: 'Leave messy paper logs and scattered chats behind. My Indekos brings all your daily operational needs into one cohesive workflow.',
+  },
+  about: {
+    badge: 'About My Indekos',
+    title: 'Connecting House Owners with',
+    highlight: 'Happy Tenants',
+    desc: 'My Indekos was born from real ground needs: traditional leasing is time-consuming, utility records get mismatched, and chats get lost. We exist to simplify everyday home management.',
+    visionBadge: 'Our Vision',
+    visionTitle: 'The Leading Modern Rental Living Ecosystem',
+    visionDesc:
+      'To become the primary digital operating standard for private owners and property networks across Indonesia in providing clean, secure, and comfortable spaces.',
+    missionBadge: 'Our Mission',
+    missionTitle: 'Empowering Managers & Occupants Alike',
+    principlesTitle: 'Core Values & Principles',
+  },
+}

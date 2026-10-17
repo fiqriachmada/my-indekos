@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ArrowRight, Home } from 'lucide-react'
+import { Menu, X, ArrowRight, Languages } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { useTranslation } from '@/i18n'
 
 export function PublicHeader() {
   const pathname = usePathname()
+  const { t, locale, toggleLanguage } = useTranslation()
   const [open, setOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
 
@@ -29,14 +31,14 @@ export function PublicHeader() {
   }, [])
 
   const navLinks = [
-    { href: '/', label: 'Beranda' },
-    { href: '/properties', label: 'Cari Kos' },
-    { href: '/fitur', label: 'Fitur' },
-    { href: '/tentang', label: 'Tentang' },
+    { href: '/', label: t.nav.home },
+    { href: '/properties', label: t.nav.search },
+    { href: '/fitur', label: t.nav.features },
+    { href: '/tentang', label: t.nav.about },
   ]
 
   const authTarget = isAuthenticated ? '/protected/dashboard' : '/login'
-  const authLabel = isAuthenticated ? 'Ke Dashboard' : 'Masuk'
+  const authLabel = isAuthenticated ? t.nav.dashboard : t.nav.login
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md transition-colors">
@@ -72,8 +74,20 @@ export function PublicHeader() {
           })}
         </nav>
 
-        {/* Right CTA / Mobile Toggle */}
-        <div className="flex items-center gap-3">
+        {/* Right CTA / Language Switcher / Mobile Toggle */}
+        <div className="flex items-center gap-2.5">
+          {/* Language Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            title={locale === 'id' ? 'Ganti ke English' : 'Switch to Bahasa Indonesia'}
+            aria-label="Ganti Bahasa"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-2.5 py-1.5 text-xs font-semibold text-muted-foreground transition hover:bg-muted hover:text-foreground active:scale-95"
+          >
+            <Languages className="size-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span className="uppercase">{locale}</span>
+          </button>
+
           <Link
             href={authTarget}
             className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs transition hover:bg-indigo-700 active:scale-95"
