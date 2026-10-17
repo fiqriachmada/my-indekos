@@ -2,8 +2,8 @@ import { SettingsNav } from './settings-nav'
 
 export default function SettingsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-screen bg-background px-4 py-10 pb-28 text-foreground transition-colors sm:px-6">
-      <div className="mx-auto max-w-5xl">
+    <div className="py-10 pb-28 text-foreground transition-colors">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600 dark:text-indigo-400">
           My Indekos
         </p>
@@ -19,6 +19,6 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
           </section>
         </div>
       </div>
-    </main>
+    </div>
   )
 }

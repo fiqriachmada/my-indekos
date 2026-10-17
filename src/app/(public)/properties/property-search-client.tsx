@@ -474,7 +474,7 @@ export default function PropertySearchClient({
                         Properti Milik Anda
                       </span>
                       <Link
-                        href="/dashboard"
+                        href="/protected/dashboard"
                         className="rounded-xl border border-border bg-background px-3 py-1.5 text-xs font-semibold hover:bg-muted transition-colors"
                       >
                         Kelola di Dashboard

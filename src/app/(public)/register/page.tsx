@@ -4,6 +4,7 @@ import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { PasswordInput } from '@/components/password-input'
+import { routes } from '@/constants'
 
 type AuthError = { code?: string; message?: string; status?: number }
 
@@ -40,7 +41,7 @@ export default function RegisterPage() {
       email: email.trim(),
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=${routes.dashboard()}`,
         data: { first_name: firstName.trim(), last_name: lastName.trim(), display_name: displayName },
       },
     })
@@ -50,7 +51,7 @@ export default function RegisterPage() {
       const { error: resendError } = await supabase.auth.resend({
         type: 'signup',
         email: email.trim(),
-        options: { emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard` },
+        options: { emailRedirectTo: `${window.location.origin}/auth/callback?next=${routes.dashboard()}` },
       })
       setLoading(false)
       if (resendError) {
@@ -66,7 +67,7 @@ export default function RegisterPage() {
       return
     }
     if (data.session) {
-      router.replace('/dashboard')
+      router.replace(routes.dashboard())
       router.refresh()
       return
     }

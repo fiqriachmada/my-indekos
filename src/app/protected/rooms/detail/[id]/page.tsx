@@ -98,7 +98,7 @@ export default async function RoomDetailPage({
           </p>
           <div className="mt-6 flex justify-center gap-3">
             <Link
-              href="/dashboard"
+              href="/protected/dashboard"
               className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition"
             >
               <ArrowLeft className="size-4" /> Kembali ke Dashboard
@@ -153,19 +153,19 @@ export default async function RoomDetailPage({
   }
 
   return (
-    <main className="min-h-screen bg-background pb-28 pt-6 text-foreground">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+    <div className="pb-28 pt-6 text-foreground">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Navigasi Balik & Breadcrumbs */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link
-            href="/dashboard"
+            href="/protected/dashboard"
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-accent hover:text-foreground shadow-2xs"
           >
             <ArrowLeft className="size-4" />
             Kembali ke Dashboard
           </Link>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Link href="/dashboard" className="hover:underline">Dashboard</Link>
+            <Link href="/protected/dashboard" className="hover:underline">Dashboard</Link>
             <span>/</span>
             <span>Kamar</span>
             <span>/</span>
@@ -358,6 +358,6 @@ export default async function RoomDetailPage({
           </div>
         </div>
       </div>
-    </main>
+    </div>
   )
 }

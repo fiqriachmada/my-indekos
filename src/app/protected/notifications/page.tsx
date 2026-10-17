@@ -25,10 +25,10 @@ export default async function NotificationsPage() {
     .returns<PageNotification[]>()
 
   return (
-    <main className="min-h-screen bg-slate-50/70 pb-28 pt-8 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+    <div className="py-8 pb-28 text-foreground transition-colors">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <NotificationsClient initialNotifications={notifications ?? []} userId={user.id} />
       </div>
-    </main>
+    </div>
   )
 }

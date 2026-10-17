@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { PasswordInput } from '@/components/password-input'
 
+import { routes } from '@/constants'
+
 type AuthError = { code?: string; message?: string; status?: number }
 
 function getRateLimitMessage(authError: AuthError) {
@@ -45,7 +47,7 @@ export default function LoginPage() {
       return
     }
 
-    router.replace('/dashboard')
+    router.replace(routes.dashboard())
     router.refresh()
   }
 

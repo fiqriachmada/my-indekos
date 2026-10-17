@@ -152,7 +152,7 @@ export function NotificationsClient({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <Link
-            href="/dashboard"
+            href="/protected/dashboard"
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground transition hover:text-foreground"
           >
             <ArrowLeftIcon className="size-3.5" />

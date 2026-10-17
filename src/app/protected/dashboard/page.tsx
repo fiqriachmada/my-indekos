@@ -122,8 +122,8 @@ export default async function DashboardPage() {
   const error = ownedRes.error ?? memberRes.error ?? roomRes.error
 
   return (
-    <main className="min-h-screen bg-background px-6 py-12 text-foreground transition-colors">
-      <div className="mx-auto max-w-5xl">
+    <div className="py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">My Indekos</p>
@@ -262,7 +262,7 @@ export default async function DashboardPage() {
           )}
         </section>
       </div>
-    </main>
+    </div>
   )
 }
 

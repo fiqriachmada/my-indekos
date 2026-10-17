@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { PasswordInput } from '@/components/password-input'
+import { routes } from '@/constants'
 
 export default function CreatePasswordPage() {
   const router = useRouter()
@@ -32,7 +33,7 @@ export default function CreatePasswordPage() {
     const { error: updateError } = await supabase.auth.updateUser({ password })
     setLoading(false)
     if (updateError) return setError('Password belum dapat disimpan. Silakan coba lagi.')
-    router.replace('/dashboard')
+    router.replace(routes.dashboard())
     router.refresh()
   }
 
