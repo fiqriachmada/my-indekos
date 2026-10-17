@@ -49,12 +49,40 @@ export default function FloatingControls() {
   const [user, setUser] = useState<string | null>(null)
   const [notifications, setNotifications] = useState<FloatingNotification[]>([])
   const [unreadCount, setUnreadCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+
+  // Auto-hide floating button saat user scroll sampai area footer (bawah halaman)
+  useEffect(() => {
+    function handleScroll() {
+      const footer = document.querySelector('footer')
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect()
+        if (footerRect.top <= window.innerHeight - 30) {
+          setIsVisible(false)
+          return
+        }
+      } else {
+        const scrollBottom =
+          document.documentElement.scrollHeight - (window.scrollY + window.innerHeight)
+        if (scrollBottom <= 80) {
+          setIsVisible(false)
+          return
+        }
+      }
+      setIsVisible(true)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [pathname])
 
   useEffect(() => {
     setMounted(true)
     const saved = (window.localStorage.getItem("my-indekos-theme") as Theme | null) ?? "system"
     setTheme(saved)
   }, [])
+
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)")
@@ -220,8 +248,15 @@ export default function FloatingControls() {
   const visibleLinks = links.filter((link) => link.href !== pathname)
 
   return (
-    <div className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2">
+    <div
+      className={`fixed bottom-5 left-1/2 z-50 -translate-x-1/2 transition-all duration-300 ${
+        isVisible
+          ? 'translate-y-0 opacity-100 pointer-events-auto'
+          : 'translate-y-12 opacity-0 pointer-events-none'
+      }`}
+    >
       <div className="relative flex items-center gap-1 rounded-full border border-border bg-card/85 text-card-foreground p-1.5 shadow-2xl backdrop-blur-xl dark:border-white/15 dark:bg-slate-900/85">
+
         {/* Menu Theme (Hanya Icon agar ringkas & serasi) */}
         <div className="relative">
           <button
