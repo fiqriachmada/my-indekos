@@ -9,10 +9,10 @@ export function PublicFooter() {
           <Link href="/properties" className="hover:text-foreground transition-colors">
             Cari Kos
           </Link>
-          <Link href="/fitur" className="hover:text-foreground transition-colors">
+          <Link href="/features" className="hover:text-foreground transition-colors">
             Fitur
           </Link>
-          <Link href="/tentang" className="hover:text-foreground transition-colors">
+          <Link href="/about" className="hover:text-foreground transition-colors">
             Tentang
           </Link>
           <Link href="/login" className="hover:text-foreground transition-colors">

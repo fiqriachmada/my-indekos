@@ -3,7 +3,7 @@
 import { useTranslation } from '@/i18n'
 import { BuildingOffice2Icon } from '@heroicons/react/24/outline'
 
-export function TentangHero() {
+export function AboutHero() {
   const { t } = useTranslation()
 
   return (

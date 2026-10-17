@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import { PublicHeader } from "@/components/public-header"
 import {
   KeyIcon,
   BoltIcon,
@@ -88,7 +87,7 @@ const detailedFeatures = [
   },
 ]
 
-export default function FiturPage() {
+export default function FeaturesPage() {
   return (
     <div className="bg-background text-foreground transition-colors">
       {/* Hero */}

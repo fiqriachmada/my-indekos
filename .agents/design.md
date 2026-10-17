@@ -71,3 +71,21 @@ Mengikuti Clean Code, Google & Airbnb TypeScript style guide, serta aturan linte
 2. **Language Persistence**:
    - Disimpan di `localStorage` (`my_indekos_locale`) dan disinkronkan secara realtime via `CustomEvent` tanpa me-reload seluruh halaman.
 
+### Standar Arsitektur Konstanta (Constants Mirroring)
+Struktur konstanta meniru (*mirroring*) langsung struktur halaman di bawah folder `src/app/`:
+```text
+src/constants/
+├── public/
+│   ├── nav/index.ts         <-- Route link navigasi publik & general
+│   ├── login/index.ts       <-- Form keys, redirect routes, storage keys login
+│   ├── register/index.ts    <-- Form keys registrasi
+│   ├── properties/index.ts  <-- Filter default, pagination limit, routes
+│   └── ...
+├── protected/
+│   ├── dashboard/index.ts   <-- Interval refresh, protected subroutes
+│   └── ...
+└── index.ts                 <-- Central barrel export untuk kemudahan import (@/constants)
+```
+- **Keunggulan**: Memudahkan pencarian (*predictable location*), menghindari *hardcoded magic string*, dan mendukung penuh `Ctrl + Click` untuk langsung menuju deklarasi nilai konstan.
+
+

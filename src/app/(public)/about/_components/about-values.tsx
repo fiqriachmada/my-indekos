@@ -7,7 +7,7 @@ import {
   ShieldCheckIcon,
 } from '@heroicons/react/24/outline'
 
-export function TentangValues() {
+export function AboutValues() {
   const { t, locale } = useTranslation()
 
   const values = [

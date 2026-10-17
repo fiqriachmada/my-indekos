@@ -26,10 +26,10 @@ type Payload = {
   waterMode: string | null
 }
 
-const rupiah = (n: number) =>
+const formatCurrency = (n: number) =>
   new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(n)
 
-const fmtDate = (iso: string) =>
+const formatDate = (iso: string) =>
   new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }).format(
     new Date(iso)
   )
@@ -182,8 +182,8 @@ export function RoomUtilities({ roomId }: { roomId: string }) {
           </p>
           {last ? (
             <div className="mt-2 space-y-0.5">
-              <p className="text-lg font-bold">{rupiah(last.amount)}</p>
-              <p className="text-xs text-muted-foreground">{fmtDate(last.paid_at)}</p>
+              <p className="text-lg font-bold">{formatCurrency(last.amount)}</p>
+              <p className="text-xs text-muted-foreground">{formatDate(last.paid_at)}</p>
               {isPln && last.token_code && <p className="font-mono text-xs">Token: {last.token_code}</p>}
               {isPln && last.kwh != null && <p className="text-xs">{last.kwh} kWh</p>}
               {!isPln && last.meter_reading != null && <p className="text-xs">Meteran: {last.meter_reading} m³</p>}
@@ -206,10 +206,10 @@ export function RoomUtilities({ roomId }: { roomId: string }) {
               <li key={e.id} className="flex items-start justify-between gap-3 py-2.5 text-xs">
                 <div className="min-w-0">
                   <p className="font-semibold">
-                    {rupiah(e.amount)}
+                    {formatCurrency(e.amount)}
                     {e.period_label && <span className="ml-2 font-normal text-muted-foreground">· {e.period_label}</span>}
                   </p>
-                  <p className="text-muted-foreground">{fmtDate(e.paid_at)}</p>
+                  <p className="text-muted-foreground">{formatDate(e.paid_at)}</p>
                   {e.token_code && <p className="font-mono text-muted-foreground">{e.token_code}</p>}
                   {e.note && <p className="mt-0.5 text-muted-foreground">“{e.note}”</p>}
                 </div>
