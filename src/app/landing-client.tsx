@@ -105,7 +105,7 @@ export default function LandingClient({ stats }: { stats: IndekosLandingStats })
                     href={authPath}
                     className="mt-3 sm:mt-0 flex w-full sm:w-auto items-center justify-center rounded-xl border border-border bg-card px-8 py-3.5 text-base font-semibold text-foreground transition hover:bg-muted"
                   >
-                    {authPath === "/dashboard" ? "Masuk ke Dashboard" : "Masuk Pemilik / Penghuni"}
+                    {authPath === "/protected/dashboard" ? "Masuk ke Dashboard" : "Masuk Pemilik / Penghuni"}
                   </Link>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export default function LandingClient({ stats }: { stats: IndekosLandingStats })
               href={authPath}
               className="inline-flex items-center justify-center rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
             >
-              {authPath === "/dashboard" ? "Ke Dashboard" : "Masuk Akun"}
+              {authPath === "/protected/dashboard" ? "Ke Dashboard" : "Masuk Akun"}
             </Link>
           </div>
         </div>
