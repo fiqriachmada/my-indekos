@@ -62,7 +62,7 @@ export function NotificationDetailClient({
           Notifikasi mungkin telah dihapus atau tautan tidak valid.
         </p>
         <Link
-          href="/notifications"
+          href="/protected/notifications"
           className="mt-6 inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-indigo-700"
         >
           <ArrowLeftIcon className="size-3.5" />
@@ -76,7 +76,7 @@ export function NotificationDetailClient({
     if (!notification) return
     setLoadingAction(true)
     try {
-      const res = await fetch('/api/rooms/respond', {
+      const res = await fetch('/protected/api/rooms/respond', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -107,11 +107,11 @@ export function NotificationDetailClient({
     if (!notification) return
     await supabase.from('notifications').delete().eq('id', notification.id)
     if (nextNotif) {
-      router.push(`/notifications/${nextNotif.id}`)
+      router.push(`/protected/notifications/${nextNotif.id}`)
     } else if (prevNotif) {
-      router.push(`/notifications/${prevNotif.id}`)
+      router.push(`/protected/notifications/${prevNotif.id}`)
     } else {
-      router.push('/notifications')
+      router.push('/protected/notifications')
     }
   }
 
@@ -133,7 +133,7 @@ export function NotificationDetailClient({
       {/* Top Bar with Pager */}
       <div className="flex items-center justify-between border-b border-border/60 pb-4">
         <Link
-          href="/notifications"
+          href="/protected/notifications"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeftIcon className="size-3.5" />
@@ -147,7 +147,7 @@ export function NotificationDetailClient({
           <div className="flex items-center gap-1">
             {prevNotif ? (
               <Link
-                href={`/notifications/${prevNotif.id}`}
+                href={`/protected/notifications/${prevNotif.id}`}
                 title={`Sebelumnya: ${prevNotif.title}`}
                 className="inline-flex size-8 items-center justify-center rounded-lg border border-border bg-card text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition"
               >
@@ -161,7 +161,7 @@ export function NotificationDetailClient({
 
             {nextNotif ? (
               <Link
-                href={`/notifications/${nextNotif.id}`}
+                href={`/protected/notifications/${nextNotif.id}`}
                 title={`Berikutnya: ${nextNotif.title}`}
                 className="inline-flex size-8 items-center justify-center rounded-lg border border-border bg-card text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition"
               >

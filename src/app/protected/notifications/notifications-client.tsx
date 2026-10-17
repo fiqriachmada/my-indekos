@@ -110,7 +110,7 @@ export function NotificationsClient({
   async function handleResponse(n: PageNotification, action: 'approved' | 'rejected') {
     setLoadingActionId(n.id)
     try {
-      const res = await fetch('/api/rooms/respond', {
+      const res = await fetch('/protected/api/rooms/respond', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -328,7 +328,7 @@ export function NotificationsClient({
 
                   <div className="flex items-center gap-2 shrink-0">
                     <Link
-                      href={`/notifications/${n.id}`}
+                      href={`/protected/notifications/${n.id}`}
                       onClick={(e) => e.stopPropagation()}
                       className="text-[11px] font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
                     >

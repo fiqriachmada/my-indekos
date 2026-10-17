@@ -369,10 +369,11 @@ export async function POST(request: Request) {
           })
           .eq('id', notificationId)
 
-        // Kirim notifikasi balasan ke owner
-        if (notif.from_user_id) {
+        // Kirim notifikasi balasan ke owner (fallback ke owner_id properti jika from_user_id null)
+        const ownerRecipientId = notif.from_user_id || notif.property?.owner_id
+        if (ownerRecipientId) {
           await admin.from('notifications').insert({
-            to_user_id: notif.from_user_id,
+            to_user_id: ownerRecipientId,
             from_user_id: user.id,
             property_id: notif.property_id,
             type: 'property_invitation_accepted',
