@@ -86,6 +86,22 @@ src/constants/
 │   └── ...
 └── index.ts                 <-- Central barrel export untuk kemudahan import (@/constants)
 ```
-- **Keunggulan**: Memudahkan pencarian (*predictable location*), menghindari *hardcoded magic string*, dan mendukung penuh `Ctrl + Click` untuk langsung menuju deklarasi nilai konstan.
+### Standar Notifikasi & Penanganan Error (Sonner Toast Standard)
+Seluruh aksi mutasi data (Create, Update, Delete) diwajibkan menggunakan **Sonner** (`toast` dari `sonner`) untuk memberikan umpan balik visual yang jelas kepada pengguna:
+1. **Sukses**:
+   - Tampilkan toast sukses dengan pesan yang ringkas dan jelas, misalnya `toast.success("Data berhasil diperbarui!")`.
+2. **Gagal (Error Handling & Transparency)**:
+   - Dilarang menelan pesan error teknis menjadi pesan umum tanpa rincian.
+   - Ekstrak pesan error asli dari API/Supabase:
+     ```ts
+     onError: (err) => {
+       const message = err instanceof Error ? err.message : 'Terjadi kesalahan saat memproses data.'
+       setError?.(message)
+       toast.error('Gagal memproses data', {
+         description: message,
+       })
+     }
+     ```
+   - Komponen formulir atau dialog wajib menampilkan kotak alert `role="alert"` yang menyajikan pesan error secara eksplisit kepada pengguna sehingga penyebab kendala (validasi schema, RLS, foreign key) dapat langsung dipahami.
 
 
